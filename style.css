@@ -54,6 +54,7 @@ ul {
     margin-bottom: 60px;
     background: var(--accent-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
 }
@@ -147,6 +148,7 @@ ul {
     margin-bottom: 10px;
     background: linear-gradient(to right, #fff, #b0bec5);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -217,6 +219,16 @@ ul {
     background: radial-gradient(circle at center, rgba(66, 165, 245, 0.2), transparent 70%);
     position: relative;
     animation: float 6s ease-in-out infinite;
+    overflow: hidden;
+    /* Ensure image stays inside circle */
+    border: 4px solid rgba(66, 165, 245, 0.3);
+    /* Optional: add a subtle border */
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @keyframes float {
