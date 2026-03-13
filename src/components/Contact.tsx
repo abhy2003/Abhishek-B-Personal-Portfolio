@@ -8,10 +8,14 @@ import { Mail, MessageSquare, MapPin, Send, CheckCircle } from "lucide-react";
 export default function Contact() {
     const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = () => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         // Note: since it targets a hidden iframe, the page won't reload.
-        // We just show the success message.
-        setTimeout(() => setSubmitted(true), 500);
+        // We just show the success message and clear the form.
+        const form = e.currentTarget;
+        setTimeout(() => {
+            setSubmitted(true);
+            form.reset();
+        }, 500);
         setTimeout(() => setSubmitted(false), 5000); // Hide after 5 seconds
     };
 
