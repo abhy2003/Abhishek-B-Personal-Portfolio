@@ -1,23 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "./ui/SectionHeading";
 import { Mail, MessageSquare, MapPin, Send, CheckCircle } from "lucide-react";
 
 export default function Contact() {
     const [submitted, setSubmitted] = useState(false);
+    const formRef = useRef<HTMLFormElement>(null);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        // Note: since it targets a hidden iframe, the page won't reload.
-        // We just show the success message and clear the form.
-        const form = e.currentTarget;
+    const handleSubmit = () => {
+        // We delay setting 'submitted' to ensure the browser has time 
+        // to initiate the native POST request to the iframe.
         setTimeout(() => {
             setSubmitted(true);
-            form.reset();
-        }, 500);
-        setTimeout(() => setSubmitted(false), 5000); // Hide after 5 seconds
+        }, 1000);
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => setSubmitted(false), 6000); 
     };
+
+    // Reset form when submission is confirmed
+    useEffect(() => {
+        if (submitted && formRef.current) {
+            formRef.current.reset();
+        }
+    }, [submitted]);
 
     return (
         <section id="contact" className="py-24 relative z-10">
@@ -67,6 +75,7 @@ export default function Contact() {
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-[#42A5F5]/20 to-[#0D47A1]/20 rounded-3xl blur-[40px] -z-10" />
                         <form
+                            ref={formRef}
                             className="flex flex-col gap-6 glass p-8 md:p-12 rounded-3xl bg-zinc-900 border border-white/10 shadow-2xl relative z-10"
                             action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf1J8wQcxefqIQSXiAWtBYs56zJtg4g82XWLr5NO5FyYh0RPQ/formResponse"
                             method="POST"
