@@ -1,51 +1,109 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp, Heart, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
-    return (
-        <footer className="relative py-12 border-t border-white/10 overflow-hidden bg-black/60">
-            <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-[#42A5F5]/50 to-transparent" />
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-            <div className="container mx-auto px-6 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="flex flex-col items-center gap-6"
-                >
-                    <p className="text-gray-400 font-medium">
-                        &copy; {new Date().getFullYear()} Abhishek B. All rights reserved.
-                    </p>
+  return (
+    <footer className="relative py-16 border-t border-slate-800/80 bg-[#02050c] overflow-hidden">
+      {/* Subtle top ambient line */}
+      <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-sky-500/50 to-transparent" />
 
-                    <div className="flex justify-center gap-6">
-                        {[
-                            { icon: <Linkedin size={22} />, href: "https://www.linkedin.com/in/abhishek-b-1a2b13276/" },
-                            { icon: <Github size={22} />, href: "https://github.com/abhy2003" },
-                            {
-                                icon: (
-                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[22px] h-[22px]">
-                                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
-                                    </svg>
-                                ),
-                                href: "https://discordapp.com/users/abhishek_b"
-                            }
-                        ].map((social, i) => (
-                            <a
-                                key={i}
-                                href={social.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-12 h-12 rounded-full glass border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#42A5F5] hover:border-[#42A5F5]/30 hover:shadow-[0_0_15px_rgba(66,165,245,0.4)] transition-all duration-300 transform hover:-translate-y-2"
-                            >
-                                {social.icon}
-                            </a>
-                        ))}
-                    </div>
-                </motion.div>
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800/80">
+          
+          {/* Brand Info */}
+          <div className="md:col-span-5 space-y-4">
+            <Link href="#home" className="flex items-center gap-2 text-xl font-bold tracking-tight text-white group">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center text-slate-950 font-black text-xs shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+                AB
+              </div>
+              <span>
+                Abhishek<span className="text-sky-400">.dev</span>
+              </span>
+            </Link>
+
+            <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
+              Passionate Flutter & Cross-Platform Mobile Engineer building scalable, high-performance applications with Firebase, IoT, and Clean Architecture.
+            </p>
+
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <span>Available for Hire & Contract Inquiries</span>
             </div>
-        </footer>
-    );
+          </div>
+
+          {/* Quick Links */}
+          <div className="md:col-span-3 space-y-3">
+            <h5 className="text-xs font-bold uppercase tracking-wider text-slate-300">Navigation</h5>
+            <ul className="space-y-2 text-sm text-slate-400">
+              {["Home", "Skills", "Projects", "Services", "Experience", "Contact"].map((item) => (
+                <li key={item}>
+                  <Link
+                    href={`#${item.toLowerCase()}`}
+                    className="hover:text-sky-400 transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Socials & Connect */}
+          <div className="md:col-span-4 space-y-4">
+            <h5 className="text-xs font-bold uppercase tracking-wider text-slate-300">Connect with Me</h5>
+            <div className="flex flex-wrap gap-2.5">
+              {[
+                { icon: <Linkedin size={18} />, href: "https://www.linkedin.com/in/abhishek-b-1a2b13276/", label: "LinkedIn" },
+                { icon: <Github size={18} />, href: "https://github.com/abhy2003", label: "GitHub" },
+                { icon: <Mail size={18} />, href: "mailto:bijuabhishek530@gmail.com", label: "Email" },
+              ].map((item, i) => (
+                <a
+                  key={i}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
+                  className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-sky-400 hover:border-sky-500/40 hover:bg-slate-800/80 transition-all shadow-sm"
+                >
+                  {item.icon}
+                </a>
+              ))}
+            </div>
+
+            <p className="text-xs text-slate-500">
+              Direct Inquiries: <a href="mailto:bijuabhishek530@gmail.com" className="text-slate-400 hover:text-sky-400">bijuabhishek530@gmail.com</a>
+            </p>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div>
+            &copy; {new Date().getFullYear()} Abhishek B. All rights reserved.
+          </div>
+
+          <div className="flex items-center gap-4">
+            <span>Crafted with Flutter mindset, Next.js & Tailwind CSS</span>
+            <button
+              onClick={scrollToTop}
+              className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-all flex items-center gap-1"
+              title="Scroll back to top"
+            >
+              <ArrowUp size={14} />
+              <span className="hidden sm:inline">Top</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+  );
 }

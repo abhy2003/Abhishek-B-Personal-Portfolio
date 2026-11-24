@@ -3,150 +3,294 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "./ui/SectionHeading";
-import { Mail, MessageSquare, MapPin, Send, CheckCircle } from "lucide-react";
+import { 
+  Mail, 
+  MessageSquare, 
+  MapPin, 
+  Send, 
+  CheckCircle, 
+  Copy, 
+  Check, 
+  Clock, 
+  Globe, 
+  ArrowUpRight,
+  Sparkles,
+  PhoneCall
+} from "lucide-react";
 
 export default function Contact() {
-    const [submitted, setSubmitted] = useState(false);
-    const formRef = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
-    const handleSubmit = () => {
-        // We delay setting 'submitted' to ensure the browser has time 
-        // to initiate the native POST request to the iframe.
-        setTimeout(() => {
-            setSubmitted(true);
-        }, 1000);
-        
-        // Hide success message after 5 seconds
-        setTimeout(() => setSubmitted(false), 6000); 
-    };
+  const copyEmail = () => {
+    navigator.clipboard.writeText("bijuabhishek530@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
 
-    // Reset form when submission is confirmed
-    useEffect(() => {
-        if (submitted && formRef.current) {
-            formRef.current.reset();
-        }
-    }, [submitted]);
+  const handleSubmit = () => {
+    setIsSending(true);
+    setTimeout(() => {
+      setSubmitted(true);
+      setIsSending(false);
+    }, 800);
 
-    return (
-        <section id="contact" className="py-24 relative z-10">
-            <div className="container mx-auto px-6 md:px-12">
-                <SectionHeading title="Get In Touch" />
+    setTimeout(() => setSubmitted(false), 6000);
+  };
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto items-start">
+  useEffect(() => {
+    if (submitted && formRef.current) {
+      formRef.current.reset();
+    }
+  }, [submitted]);
 
-                    {/* Contact Info */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: 0.6 }}
-                        className="flex flex-col gap-10"
-                    >
-                        <div>
-                            <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">Let's Talk</h3>
-                            <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed mb-4">
-                                Interested in my work or have a partnership idea? Reach out to me directly!
-                            </p>
-                        </div>
+  return (
+    <section id="contact" className="py-24 relative z-10">
+      <div className="container mx-auto px-6 md:px-12">
+        <SectionHeading
+          badge="Start a Conversation"
+          title="Let's Build Something Exceptional"
+          subtitle="Whether you have an upcoming mobile app project, need Flutter architecture consulting, or want to discuss a full-time engineering opportunity."
+        />
 
-                        <div className="space-y-6">
-                            {[
-                                { icon: <Mail size={24} className="text-[#42A5F5]" />, label: "bijuabhishek530@gmail.com" },
-                                { icon: <MessageSquare size={24} className="text-[#42A5F5]" />, label: "Discord: abhishek_b" },
-                                { icon: <MapPin size={24} className="text-[#42A5F5]" />, label: "India" },
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-center gap-5 group glass p-5 rounded-2xl border border-white/5 hover:border-[#42A5F5]/30 transition-all bg-zinc-900 shadow-md">
-                                    <div className="p-4 bg-white/5 rounded-full shadow-inner group-hover:scale-110 group-hover:bg-[#42A5F5]/10 transition-all">
-                                        {item.icon}
-                                    </div>
-                                    <span className="text-lg font-medium text-gray-300 group-hover:text-white transition-colors">{item.label}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Contact Form */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="relative"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-tr from-[#42A5F5]/20 to-[#0D47A1]/20 rounded-3xl blur-[40px] -z-10" />
-                        <form
-                            ref={formRef}
-                            className="flex flex-col gap-6 glass p-8 md:p-12 rounded-3xl bg-zinc-900 border border-white/10 shadow-2xl relative z-10"
-                            action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf1J8wQcxefqIQSXiAWtBYs56zJtg4g82XWLr5NO5FyYh0RPQ/formResponse"
-                            method="POST"
-                            target="hidden_iframe"
-                            onSubmit={handleSubmit}
-                        >
-                            <div className="flex flex-col gap-2">
-                                <label className="text-sm font-semibold text-gray-400 uppercase tracking-widest pl-1">Name</label>
-                                <input
-                                    type="text"
-                                    name="entry.1874968991"
-                                    placeholder="John Doe"
-                                    required
-                                    className="bg-black/40 border border-white/10 focus:border-[#42A5F5] text-white p-4 rounded-xl outline-none transition-all focus:shadow-[0_0_15px_rgba(66,165,245,0.3)] hover:bg-black/60 font-light"
-                                />
-                            </div>
-
-                            <div className="flex flex-col gap-2">
-                                <label className="text-sm font-semibold text-gray-400 uppercase tracking-widest pl-1">Email</label>
-                                <input
-                                    type="email"
-                                    name="entry.1933337502"
-                                    placeholder="john@example.com"
-                                    required
-                                    className="bg-black/40 border border-white/10 focus:border-[#42A5F5] text-white p-4 rounded-xl outline-none transition-all focus:shadow-[0_0_15px_rgba(66,165,245,0.3)] hover:bg-black/60 font-light"
-                                />
-                            </div>
-
-                            <div className="flex flex-col gap-2">
-                                <label className="text-sm font-semibold text-gray-400 uppercase tracking-widest pl-1">Message</label>
-                                <textarea
-                                    name="entry.1922595339"
-                                    rows={5}
-                                    placeholder="Your message here..."
-                                    required
-                                    className="bg-black/40 border border-white/10 focus:border-[#42A5F5] text-white p-4 rounded-xl outline-none transition-all focus:shadow-[0_0_15px_rgba(66,165,245,0.3)] resize-none hover:bg-black/60 font-light"
-                                ></textarea>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="w-full flex items-center justify-center gap-3 py-4 mt-4 bg-gradient-to-r from-[#42A5F5] to-[#0D47A1] text-white rounded-xl font-bold text-lg hover:shadow-[0_4px_20px_rgba(66,165,245,0.5)] transform hover:-translate-y-1 transition-all group overflow-hidden relative"
-                            >
-                                <span className="relative z-10 flex items-center gap-3">
-                                    Send Message <Send size={20} className="group-hover:translate-x-1 transition-transform" />
-                                </span>
-                                <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 z-0"></div>
-                            </button>
-                        </form>
-
-                        {/* Modal Overlay logic */}
-                        <AnimatePresence>
-                            {submitted && (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    className="absolute inset-0 z-50 flex items-center justify-center p-8 bg-zinc-950/90 backdrop-blur-sm rounded-3xl"
-                                >
-                                    <div className="text-center flex flex-col items-center gap-6 glass p-8 rounded-2xl border border-green-500/30">
-                                        <CheckCircle size={64} className="text-green-400" />
-                                        <h3 className="text-3xl font-bold text-white">Message Sent!</h3>
-                                        <p className="text-gray-400 max-w-sm">Thanks for reaching out. I'll get back to you shortly.</p>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </motion.div>
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto items-start">
+          
+          {/* Left Column: Direct Contact Info & Timezone Badges */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 space-y-8"
+          >
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 mb-4">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span>Currently Accepting Projects</span>
+              </div>
+              <h3 className="text-3xl font-extrabold text-white leading-tight">
+                Get in Touch Directly
+              </h3>
+              <p className="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+                Have a project timeline or wireframe? Send an email or fill out the form. 
+                I typically respond within <span className="text-slate-200 font-semibold">4–8 hours</span>.
+              </p>
             </div>
-            <iframe name="hidden_iframe" id="hidden_iframe" style={{ display: "none" }}></iframe>
-        </section>
-    );
+
+            {/* Quick Contact Cards */}
+            <div className="space-y-4">
+              
+              {/* Email Card with Copy Trigger */}
+              <div className="p-5 rounded-2xl glass-card border border-slate-800/80 hover:border-sky-500/40 transition-all flex items-center justify-between gap-4 group">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-500/20 group-hover:scale-105 transition-transform">
+                    <Mail size={22} />
+                  </div>
+                  <div>
+                    <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Email Address</span>
+                    <a
+                      href="mailto:bijuabhishek530@gmail.com"
+                      className="text-sm sm:text-base font-bold text-white hover:text-sky-400 transition-colors block"
+                    >
+                      bijuabhishek530@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                <button
+                  onClick={copyEmail}
+                  type="button"
+                  title="Copy email to clipboard"
+                  className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-700/60 flex items-center gap-1.5 text-xs font-medium"
+                >
+                  {copied ? (
+                    <>
+                      <Check size={15} className="text-emerald-400" />
+                      <span className="text-emerald-400">Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={15} />
+                      <span className="hidden sm:inline">Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Discord Card */}
+              <a
+                href="https://discordapp.com/users/abhishek_b"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-5 rounded-2xl glass-card border border-slate-800/80 hover:border-indigo-500/40 transition-all flex items-center justify-between gap-4 group block"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 group-hover:scale-105 transition-transform">
+                    <MessageSquare size={22} />
+                  </div>
+                  <div>
+                    <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Discord Community</span>
+                    <div className="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition-colors">
+                      abhishek_b
+                    </div>
+                  </div>
+                </div>
+                <ArrowUpRight size={18} className="text-slate-500 group-hover:text-indigo-400 transition-colors" />
+              </a>
+
+              {/* Location & Timezone Card */}
+              <div className="p-5 rounded-2xl glass-card border border-slate-800/80 flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-slate-800 text-slate-300 border border-slate-700">
+                  <Globe size={22} />
+                </div>
+                <div>
+                  <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Location & Timezone</span>
+                  <div className="text-sm sm:text-base font-bold text-white">
+                    India (IST • UTC +5:30)
+                  </div>
+                  <div className="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
+                    <Clock size={12} className="text-sky-400" />
+                    <span>Flexible overlap with US, UK & APAC hours</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Availability checklist */}
+            <div className="p-5 rounded-2xl bg-slate-900/40 border border-slate-800 space-y-2 text-xs sm:text-sm text-slate-300">
+              <div className="font-semibold text-white mb-2">Available for:</div>
+              <div className="flex items-center gap-2">
+                <span className="text-sky-400">✓</span> Full-time Mobile Developer positions
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-sky-400">✓</span> Fixed-Scope MVP / Contract Delivery
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-sky-400">✓</span> Flutter Technical Architecture Consulting
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column: High-End Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-7 relative"
+          >
+            {/* Form Container */}
+            <div className="relative rounded-3xl p-8 sm:p-10 glass-card border border-slate-800/80 shadow-2xl bg-[#0b1120]">
+              <div className="mb-6">
+                <h4 className="text-2xl font-bold text-white">Send a Direct Message</h4>
+                <p className="text-xs sm:text-sm text-slate-400 mt-1">
+                  Fill in your details below and I'll receive it straight into my inbox.
+                </p>
+              </div>
+
+              <form
+                ref={formRef}
+                action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf1J8wQcxefqIQSXiAWtBYs56zJtg4g82XWLr5NO5FyYh0RPQ/formResponse"
+                method="POST"
+                target="hidden_iframe"
+                onSubmit={handleSubmit}
+                className="space-y-5"
+              >
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    Your Name <span className="text-sky-400">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="entry.1874968991"
+                    placeholder="e.g. Alex Johnson"
+                    required
+                    className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    Your Email <span className="text-sky-400">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="entry.1933337502"
+                    placeholder="alex@company.com"
+                    required
+                    className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    Project Details & Message <span className="text-sky-400">*</span>
+                  </label>
+                  <textarea
+                    name="entry.1922595339"
+                    rows={5}
+                    placeholder="Tell me about your app goals, timeline, or open role..."
+                    required
+                    className="w-full bg-slate-900/90 border border-slate-800 rounded-xl p-4 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSending || submitted}
+                  className={`w-full py-4 rounded-xl font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 transition-all shadow-lg ${
+                    isSending || submitted
+                      ? "bg-slate-800 text-slate-400 cursor-not-allowed border border-slate-700"
+                      : "bg-gradient-to-r from-sky-400 via-sky-300 to-blue-400 text-slate-950 hover:opacity-95 shadow-[0_4px_25px_rgba(56,189,248,0.3)] hover:shadow-[0_4px_30px_rgba(56,189,248,0.5)] transform hover:-translate-y-0.5"
+                  }`}
+                >
+                  {isSending ? (
+                    <span>Transmitting Message...</span>
+                  ) : submitted ? (
+                    <span className="flex items-center gap-2 text-emerald-400">
+                      <CheckCircle size={18} />
+                      Message Received!
+                    </span>
+                  ) : (
+                    <>
+                      <span>Send Project Message</span>
+                      <Send size={18} />
+                    </>
+                  )}
+                </button>
+              </form>
+
+              {/* Success modal pop-in */}
+              <AnimatePresence>
+                {submitted && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    className="absolute inset-0 z-50 flex items-center justify-center p-8 bg-slate-950/95 backdrop-blur-md rounded-3xl"
+                  >
+                    <div className="text-center flex flex-col items-center gap-4 max-w-sm">
+                      <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.3)]">
+                        <CheckCircle size={36} />
+                      </div>
+                      <h4 className="text-2xl font-bold text-white">Thank You!</h4>
+                      <p className="text-sm text-slate-300 leading-relaxed">
+                        Your message has been delivered to Abhishek. I'll review your inquiry and get back to you shortly.
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+      <iframe name="hidden_iframe" id="hidden_iframe" style={{ display: "none" }} />
+    </section>
+  );
 }
