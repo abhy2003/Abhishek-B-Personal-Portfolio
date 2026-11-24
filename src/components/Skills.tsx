@@ -26,128 +26,102 @@ interface SkillItem {
   category: "mobile" | "cloud" | "iot" | "data";
   desc: string;
   icon: any;
-  color: string;
   badge: string;
-  level: string;
 }
 
 const skillsData: SkillItem[] = [
   {
     name: "Flutter Framework",
     category: "mobile",
-    desc: "Production cross-platform mobile apps for iOS and Android with high performance and pixel-perfect UI.",
+    desc: "Single-codebase cross-platform mobile apps for iOS & Android with native 60 FPS performance.",
     icon: Smartphone,
-    color: "from-sky-500/20 to-blue-500/10 text-sky-400 border-sky-500/30",
-    badge: "Primary Core",
-    level: "Advanced",
+    badge: "Core",
   },
   {
     name: "Dart Programming",
     category: "mobile",
-    desc: "Asynchronous programming, Streams, null safety, OOP patterns, and clean maintainable coding conventions.",
+    desc: "Async programming, Streams, null-safety, OOP patterns, and clean maintainable conventions.",
     icon: Terminal,
-    color: "from-blue-500/20 to-indigo-500/10 text-blue-400 border-blue-500/30",
-    badge: "Core Language",
-    level: "Advanced",
+    badge: "Language",
   },
   {
-    name: "BLoC & State Architecture",
+    name: "BLoC & Riverpod",
     category: "mobile",
-    desc: "Scalable reactive state management using BLoC, Cubit, and Riverpod with predictable unidirectional data flows.",
+    desc: "Predictable unidirectional state management and testable Clean Architecture patterns.",
     icon: Layers,
-    color: "from-cyan-500/20 to-teal-500/10 text-cyan-400 border-cyan-500/30",
     badge: "Architecture",
-    level: "Advanced",
   },
   {
-    name: "Firebase Cloud Ecosystem",
+    name: "Firebase Suite",
     category: "cloud",
     desc: "Firebase Authentication, Cloud Firestore real-time sync, Cloud Functions, and Cloud Storage.",
     icon: Flame,
-    color: "from-amber-500/20 to-orange-500/10 text-amber-400 border-amber-500/30",
-    badge: "Backend & BaaS",
-    level: "Advanced",
+    badge: "BaaS",
   },
   {
-    name: "IoT & Embedded Mobile",
+    name: "IoT & Raspberry Pi",
     category: "iot",
-    desc: "Interfacing Flutter with Raspberry Pi, GPIO pins, servo controls, and MQTT telemetry for smart devices.",
+    desc: "Interfacing Flutter with Raspberry Pi GPIO, servo motors, and MQTT telemetry communication.",
     icon: Cpu,
-    color: "from-purple-500/20 to-violet-500/10 text-purple-400 border-purple-500/30",
-    badge: "Hardware & IoT",
-    level: "Specialized",
+    badge: "Hardware",
   },
   {
-    name: "Google Maps & Places API",
+    name: "Google Maps SDK",
     category: "mobile",
-    desc: "Turn-by-turn routing, live geofencing, real-time driver tracking, markers, and custom map themes.",
+    desc: "Turn-by-turn routing, polyline animations, live geofencing, and Places autocomplete.",
     icon: MapPin,
-    color: "from-emerald-500/20 to-teal-500/10 text-emerald-400 border-emerald-500/30",
-    badge: "Geo & Location",
-    level: "Proficient",
+    badge: "Location",
   },
   {
-    name: "Offline Storage (Hive & SQLite)",
+    name: "Offline DB (Hive & SQLite)",
     category: "data",
-    desc: "Offline-first architectures using SQFlite, Hive key-value storage, and encrypted local persistence.",
+    desc: "Offline-first architectures using SQFlite, Hive key-value persistence, and fast local cache.",
     icon: Database,
-    color: "from-indigo-500/20 to-blue-500/10 text-indigo-400 border-indigo-500/30",
-    badge: "Database",
-    level: "Proficient",
+    badge: "Storage",
   },
   {
-    name: "Payment Gateways (Razorpay)",
+    name: "Razorpay Payments",
     category: "cloud",
-    desc: "Secure checkout experiences, transaction verification, webhook integration, and invoice handling.",
+    desc: "Secure checkout experiences, transaction verification, webhooks, and invoice handling.",
     icon: CreditCard,
-    color: "from-teal-500/20 to-emerald-500/10 text-teal-400 border-teal-500/30",
-    badge: "Fintech & Payments",
-    level: "Proficient",
+    badge: "Fintech",
   },
   {
-    name: "Push Notifications & Real-Time",
+    name: "Push Notifications",
     category: "cloud",
-    desc: "FCM (Firebase Cloud Messaging), background message handlers, silent data pushes, and WebSockets.",
+    desc: "FCM (Firebase Cloud Messaging), silent background notifications, and WebSockets.",
     icon: Radio,
-    color: "from-rose-500/20 to-pink-500/10 text-rose-400 border-rose-500/30",
-    badge: "Real-Time Comms",
-    level: "Proficient",
+    badge: "Real-Time",
   },
   {
-    name: "REST APIs & JSON Parsing",
+    name: "REST APIs & Dio",
     category: "cloud",
-    desc: "Robust HTTP client architectures with Dio/http, interceptors, retry logic, error handling, and model code-gen.",
+    desc: "Robust HTTP client architectures with interceptors, token refresh, and retry logic.",
     icon: Workflow,
-    color: "from-sky-500/20 to-cyan-500/10 text-sky-400 border-sky-500/30",
-    badge: "API Architecture",
-    level: "Advanced",
+    badge: "APIs",
   },
   {
-    name: "Git, CI/CD & Play Store",
+    name: "Git & App Deployment",
     category: "mobile",
-    desc: "Version control with Git, feature branch workflows, GitHub Actions, and Android APK / App Bundle release packaging.",
+    desc: "Version control workflows, GitHub Actions, and Android APK / App Bundle releases.",
     icon: GitBranch,
-    color: "from-slate-500/20 to-zinc-500/10 text-slate-300 border-slate-500/30",
-    badge: "DevOps & Tools",
-    level: "Proficient",
+    badge: "DevOps",
   },
   {
-    name: "Security & Clean Code",
+    name: "Biometric & Security",
     category: "mobile",
-    desc: "Biometric authentication (Fingerprint / Face ID), secure token storage, obfuscation, and lint standards.",
+    desc: "Fingerprint & Face ID authentication, secure local storage, and code obfuscation.",
     icon: ShieldCheck,
-    color: "from-violet-500/20 to-purple-500/10 text-violet-400 border-violet-500/30",
-    badge: "App Security",
-    level: "Proficient",
+    badge: "Security",
   },
 ];
 
 const categories = [
   { id: "all", label: "All Skills" },
-  { id: "mobile", label: "Mobile & Architecture" },
+  { id: "mobile", label: "Mobile" },
   { id: "cloud", label: "Cloud & APIs" },
-  { id: "iot", label: "IoT & Hardware" },
-  { id: "data", label: "Databases & Storage" },
+  { id: "iot", label: "IoT Hardware" },
+  { id: "data", label: "Databases" },
 ];
 
 export default function Skills() {
@@ -158,24 +132,24 @@ export default function Skills() {
   );
 
   return (
-    <section id="skills" className="py-24 relative z-10">
+    <section id="skills" className="py-20 relative z-10">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading
-          badge="Technical Arsenal"
-          title="Engineered for Performance & Scale"
-          subtitle="A comprehensive toolkit refined over years of building cross-platform mobile apps, cloud integrations, and IoT hardware interfaces."
+          badge="Technical Skills"
+          title="Core Technologies & Frameworks"
+          subtitle="A battle-tested mobile development stack optimized for speed, maintainability, and clean architecture."
         />
 
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id as SkillCategory)}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
                 activeTab === cat.id
-                  ? "bg-sky-400 text-slate-950 shadow-[0_0_20px_rgba(56,189,248,0.4)] scale-105"
-                  : "bg-slate-900/80 text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700"
+                  ? "bg-[#3ecf8e] text-slate-950 font-bold shadow-[0_0_15px_rgba(62,207,142,0.3)] scale-105"
+                  : "bg-zinc-900/80 text-zinc-400 hover:text-white border border-zinc-800"
               }`}
             >
               {cat.label}
@@ -183,10 +157,10 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Skills Grid */}
+        {/* Compact, Well-Proportioned Skills Matrix */}
         <motion.div 
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
         >
           <AnimatePresence>
             {filteredSkills.map((skill, index) => {
@@ -197,39 +171,28 @@ export default function Skills() {
                   key={skill.name}
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, delay: index * 0.04 }}
-                  className="group relative p-6 rounded-2xl glass-card border border-slate-800/80 hover:border-sky-500/40 transition-all duration-300 hover:shadow-[0_10px_30px_-10px_rgba(56,189,248,0.15)] flex flex-col justify-between"
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.25, delay: index * 0.03 }}
+                  whileHover={{ y: -4, borderColor: "rgba(62, 207, 142, 0.4)" }}
+                  className="p-4 rounded-xl glass-card border border-zinc-800/80 transition-all flex flex-col justify-between group cursor-default shadow-sm hover:shadow-[0_8px_25px_-8px_rgba(62,207,142,0.18)]"
                 >
-                  {/* Card Header */}
                   <div>
-                    <div className="flex items-center justify-between mb-5">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${skill.color} border group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon size={24} />
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="p-2 rounded-lg bg-[#3ecf8e]/10 text-[#3ecf8e] border border-[#3ecf8e]/20 group-hover:scale-110 transition-transform duration-200">
+                        <Icon size={18} />
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 bg-slate-900/90 px-2.5 py-1 rounded-md border border-slate-800">
-                          {skill.badge}
-                        </span>
-                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#3ecf8e] bg-[#3ecf8e]/10 px-2 py-0.5 rounded border border-[#3ecf8e]/20">
+                        {skill.badge}
+                      </span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-white group-hover:text-sky-400 transition-colors mb-2">
+                    <h3 className="text-sm font-bold text-white group-hover:text-[#3ecf8e] transition-colors mb-1">
                       {skill.name}
                     </h3>
 
-                    <p className="text-sm text-slate-400 leading-relaxed font-normal">
+                    <p className="text-xs text-zinc-400 leading-relaxed font-normal">
                       {skill.desc}
                     </p>
-                  </div>
-
-                  {/* Card Bottom status */}
-                  <div className="pt-4 mt-4 border-t border-slate-800/60 flex items-center justify-between text-xs">
-                    <span className="text-slate-500">Proficiency</span>
-                    <span className="font-semibold text-slate-300 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
-                      {skill.level}
-                    </span>
                   </div>
                 </motion.div>
               );
@@ -237,30 +200,25 @@ export default function Skills() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Architecture Standards Callout Bar */}
+        {/* Compact Guarantee Strip */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-16 p-6 sm:p-8 rounded-3xl glass-card border border-slate-800/80 bg-gradient-to-r from-slate-900/60 via-slate-900/90 to-sky-950/30 flex flex-col md:flex-row items-center justify-between gap-6"
+          transition={{ duration: 0.4 }}
+          className="mt-10 p-4 rounded-2xl glass-card border border-zinc-800/80 bg-[#3ecf8e]/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs"
         >
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0">
-              <Zap size={24} />
-            </div>
-            <div>
-              <h4 className="text-base sm:text-lg font-bold text-white">Engineering Quality Guarantee</h4>
-              <p className="text-xs sm:text-sm text-slate-400">Strict linting, Clean Architecture layer separation, memory leak profiling, and 60 FPS guaranteed animations.</p>
-            </div>
+          <div className="flex items-center gap-2.5">
+            <Zap size={16} className="text-[#3ecf8e] shrink-0" />
+            <span className="text-zinc-300 font-medium">
+              Architecture Standard: <strong className="text-white">Clean Architecture + BLoC</strong> • 60 FPS Guaranteed Motion
+            </span>
           </div>
 
-          <div className="flex flex-wrap gap-2.5 shrink-0">
-            {["Clean Architecture", "Null-Safe Dart", "Modular Feature-First", "Offline Resilience"].map((item, i) => (
-              <span key={i} className="text-xs font-medium text-slate-300 bg-slate-800/80 border border-slate-700/60 px-3 py-1.5 rounded-lg">
-                ✓ {item}
-              </span>
-            ))}
+          <div className="flex flex-wrap gap-2 text-[11px] text-[#3ecf8e]">
+            <span className="bg-zinc-800/80 px-2.5 py-1 rounded-md border border-zinc-700/60">✓ Null-Safe</span>
+            <span className="bg-zinc-800/80 px-2.5 py-1 rounded-md border border-zinc-700/60">✓ Offline Cache</span>
+            <span className="bg-zinc-800/80 px-2.5 py-1 rounded-md border border-zinc-700/60">✓ Modular</span>
           </div>
         </motion.div>
 

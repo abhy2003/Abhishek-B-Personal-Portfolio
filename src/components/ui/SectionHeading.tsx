@@ -18,37 +18,37 @@ export default function SectionHeading({
   const isCenter = align === "center";
 
   return (
-    <div className={`mb-16 md:mb-20 ${isCenter ? "text-center max-w-3xl mx-auto" : "max-w-2xl"}`}>
+    <div className={`mb-10 md:mb-14 ${isCenter ? "text-center max-w-2xl mx-auto" : "max-w-xl"}`}>
       {badge && (
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-sky-400 bg-sky-500/10 border border-sky-500/20 mb-4 backdrop-blur-md shadow-sm"
+          transition={{ duration: 0.3 }}
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase text-[#3ecf8e] bg-[#3ecf8e]/10 border border-[#3ecf8e]/25 mb-3 backdrop-blur-md"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#3ecf8e] animate-pulse" />
           {badge}
         </motion.div>
       )}
 
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight"
+        transition={{ duration: 0.4, delay: 0.05 }}
+        className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight"
       >
         {title}
       </motion.h2>
 
       {subtitle && (
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-4 text-base sm:text-lg text-slate-400 font-normal leading-relaxed"
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="mt-3 text-sm sm:text-base text-zinc-400 font-normal leading-relaxed"
         >
           {subtitle}
         </motion.p>

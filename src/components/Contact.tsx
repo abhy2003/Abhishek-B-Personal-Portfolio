@@ -6,16 +6,13 @@ import SectionHeading from "./ui/SectionHeading";
 import { 
   Mail, 
   MessageSquare, 
-  MapPin, 
   Send, 
   CheckCircle, 
   Copy, 
   Check, 
   Clock, 
   Globe, 
-  ArrowUpRight,
-  Sparkles,
-  PhoneCall
+  ArrowUpRight
 } from "lucide-react";
 
 export default function Contact() {
@@ -47,52 +44,51 @@ export default function Contact() {
   }, [submitted]);
 
   return (
-    <section id="contact" className="py-24 relative z-10">
+    <section id="contact" className="py-20 relative z-10">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading
-          badge="Start a Conversation"
+          badge="Contact"
           title="Let's Build Something Exceptional"
-          subtitle="Whether you have an upcoming mobile app project, need Flutter architecture consulting, or want to discuss a full-time engineering opportunity."
+          subtitle="Whether you have an upcoming mobile app project, need Flutter consulting, or want to discuss full-time engineering roles."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-5xl mx-auto items-start">
           
-          {/* Left Column: Direct Contact Info & Timezone Badges */}
+          {/* Left Column: Direct Info & Timezone Badges */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -25 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 space-y-8"
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-5 space-y-4"
           >
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 mb-4">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                <span>Currently Accepting Projects</span>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold text-[#3ecf8e] bg-[#3ecf8e]/10 border border-[#3ecf8e]/20 mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#3ecf8e] animate-ping" />
+                <span>Available for New Projects</span>
               </div>
-              <h3 className="text-3xl font-extrabold text-white leading-tight">
+              <h3 className="text-2xl font-bold text-white">
                 Get in Touch Directly
               </h3>
-              <p className="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
-                Have a project timeline or wireframe? Send an email or fill out the form. 
-                I typically respond within <span className="text-slate-200 font-semibold">4–8 hours</span>.
+              <p className="text-zinc-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
+                Have a project timeline or wireframe? I typically respond within <span className="text-[#3ecf8e] font-semibold">4–8 hours</span>.
               </p>
             </div>
 
             {/* Quick Contact Cards */}
-            <div className="space-y-4">
+            <div className="space-y-3">
               
               {/* Email Card with Copy Trigger */}
-              <div className="p-5 rounded-2xl glass-card border border-slate-800/80 hover:border-sky-500/40 transition-all flex items-center justify-between gap-4 group">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-500/20 group-hover:scale-105 transition-transform">
-                    <Mail size={22} />
+              <div className="p-4 rounded-xl glass-card border border-zinc-800/80 hover:border-[#3ecf8e]/40 transition-all flex items-center justify-between gap-3 group">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-lg bg-[#3ecf8e]/10 text-[#3ecf8e] border border-[#3ecf8e]/20 group-hover:scale-105 transition-transform">
+                    <Mail size={18} />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Email Address</span>
+                    <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Email</span>
                     <a
                       href="mailto:bijuabhishek530@gmail.com"
-                      className="text-sm sm:text-base font-bold text-white hover:text-sky-400 transition-colors block"
+                      className="text-xs sm:text-sm font-bold text-white hover:text-[#3ecf8e] transition-colors block"
                     >
                       bijuabhishek530@gmail.com
                     </a>
@@ -103,16 +99,16 @@ export default function Contact() {
                   onClick={copyEmail}
                   type="button"
                   title="Copy email to clipboard"
-                  className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-700/60 flex items-center gap-1.5 text-xs font-medium"
+                  className="p-2 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 hover:text-white transition-all border border-zinc-700/60 flex items-center gap-1 text-[11px] font-medium"
                 >
                   {copied ? (
                     <>
-                      <Check size={15} className="text-emerald-400" />
-                      <span className="text-emerald-400">Copied</span>
+                      <Check size={13} className="text-[#3ecf8e]" />
+                      <span className="text-[#3ecf8e]">Copied</span>
                     </>
                   ) : (
                     <>
-                      <Copy size={15} />
+                      <Copy size={13} />
                       <span className="hidden sm:inline">Copy</span>
                     </>
                   )}
@@ -124,70 +120,66 @@ export default function Contact() {
                 href="https://discordapp.com/users/abhishek_b"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-5 rounded-2xl glass-card border border-slate-800/80 hover:border-indigo-500/40 transition-all flex items-center justify-between gap-4 group block"
+                className="p-4 rounded-xl glass-card border border-zinc-800/80 hover:border-[#3ecf8e]/40 transition-all flex items-center justify-between gap-3 group block"
               >
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 group-hover:scale-105 transition-transform">
-                    <MessageSquare size={22} />
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-lg bg-[#3ecf8e]/10 text-[#3ecf8e] border border-[#3ecf8e]/20 group-hover:scale-105 transition-transform">
+                    <MessageSquare size={18} />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Discord Community</span>
-                    <div className="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition-colors">
+                    <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Discord</span>
+                    <div className="text-xs sm:text-sm font-bold text-white group-hover:text-[#3ecf8e] transition-colors">
                       abhishek_b
                     </div>
                   </div>
                 </div>
-                <ArrowUpRight size={18} className="text-slate-500 group-hover:text-indigo-400 transition-colors" />
+                <ArrowUpRight size={16} className="text-zinc-500 group-hover:text-[#3ecf8e] transition-colors" />
               </a>
 
               {/* Location & Timezone Card */}
-              <div className="p-5 rounded-2xl glass-card border border-slate-800/80 flex items-center gap-4">
-                <div className="p-3 rounded-xl bg-slate-800 text-slate-300 border border-slate-700">
-                  <Globe size={22} />
+              <div className="p-4 rounded-xl glass-card border border-zinc-800/80 flex items-center gap-3">
+                <div className="p-2.5 rounded-lg bg-zinc-800 text-zinc-300 border border-zinc-700">
+                  <Globe size={18} />
                 </div>
                 <div>
-                  <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Location & Timezone</span>
-                  <div className="text-sm sm:text-base font-bold text-white">
+                  <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Location & Timezone</span>
+                  <div className="text-xs sm:text-sm font-bold text-white">
                     India (IST • UTC +5:30)
                   </div>
-                  <div className="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
-                    <Clock size={12} className="text-sky-400" />
-                    <span>Flexible overlap with US, UK & APAC hours</span>
+                  <div className="text-[11px] text-zinc-400 flex items-center gap-1 mt-0.5">
+                    <Clock size={11} className="text-[#3ecf8e]" />
+                    <span>Flexible overlap with US, UK & APAC</span>
                   </div>
                 </div>
               </div>
 
             </div>
 
-            {/* Availability checklist */}
-            <div className="p-5 rounded-2xl bg-slate-900/40 border border-slate-800 space-y-2 text-xs sm:text-sm text-slate-300">
-              <div className="font-semibold text-white mb-2">Available for:</div>
-              <div className="flex items-center gap-2">
-                <span className="text-sky-400">✓</span> Full-time Mobile Developer positions
+            {/* Compact Availability Checklist */}
+            <div className="p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 space-y-1.5 text-xs text-zinc-300">
+              <div className="text-[11px] font-bold text-white">Accepting:</div>
+              <div className="flex items-center gap-1.5 text-[11px]">
+                <span className="text-[#3ecf8e]">✓</span> Full-time Mobile Developer positions
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-sky-400">✓</span> Fixed-Scope MVP / Contract Delivery
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-sky-400">✓</span> Flutter Technical Architecture Consulting
+              <div className="flex items-center gap-1.5 text-[11px]">
+                <span className="text-[#3ecf8e]">✓</span> Fixed-Scope MVP / Contract delivery
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column: High-End Contact Form */}
+          {/* Right Column: Compact High-Tech Form */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             className="lg:col-span-7 relative"
           >
-            {/* Form Container */}
-            <div className="relative rounded-3xl p-8 sm:p-10 glass-card border border-slate-800/80 shadow-2xl bg-[#0b1120]">
-              <div className="mb-6">
-                <h4 className="text-2xl font-bold text-white">Send a Direct Message</h4>
-                <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                  Fill in your details below and I'll receive it straight into my inbox.
+            <div className="relative rounded-2xl p-6 sm:p-7 glass-card border border-zinc-800/80 shadow-xl bg-[#0e0f13]">
+              <div className="mb-4">
+                <h4 className="text-xl font-bold text-white">Send a Message</h4>
+                <p className="text-xs text-zinc-400 mt-0.5">
+                  Direct message straight to my inbox via Google Forms.
                 </p>
               </div>
 
@@ -197,88 +189,88 @@ export default function Contact() {
                 method="POST"
                 target="hidden_iframe"
                 onSubmit={handleSubmit}
-                className="space-y-5"
+                className="space-y-4"
               >
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Your Name <span className="text-sky-400">*</span>
+                  <label className="block text-[11px] font-bold text-zinc-300 uppercase tracking-wider mb-1.5">
+                    Your Name <span className="text-[#3ecf8e]">*</span>
                   </label>
                   <input
                     type="text"
                     name="entry.1874968991"
                     placeholder="e.g. Alex Johnson"
                     required
-                    className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all"
+                    className="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-white placeholder-zinc-500 text-xs focus:outline-none focus:border-[#3ecf8e] focus:ring-1 focus:ring-[#3ecf8e] transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Your Email <span className="text-sky-400">*</span>
+                  <label className="block text-[11px] font-bold text-zinc-300 uppercase tracking-wider mb-1.5">
+                    Your Email <span className="text-[#3ecf8e]">*</span>
                   </label>
                   <input
                     type="email"
                     name="entry.1933337502"
                     placeholder="alex@company.com"
                     required
-                    className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all"
+                    className="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-white placeholder-zinc-500 text-xs focus:outline-none focus:border-[#3ecf8e] focus:ring-1 focus:ring-[#3ecf8e] transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Project Details & Message <span className="text-sky-400">*</span>
+                  <label className="block text-[11px] font-bold text-zinc-300 uppercase tracking-wider mb-1.5">
+                    Message <span className="text-[#3ecf8e]">*</span>
                   </label>
                   <textarea
                     name="entry.1922595339"
-                    rows={5}
+                    rows={4}
                     placeholder="Tell me about your app goals, timeline, or open role..."
                     required
-                    className="w-full bg-slate-900/90 border border-slate-800 rounded-xl p-4 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all resize-none"
+                    className="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl p-3.5 text-white placeholder-zinc-500 text-xs focus:outline-none focus:border-[#3ecf8e] focus:ring-1 focus:ring-[#3ecf8e] transition-all resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSending || submitted}
-                  className={`w-full py-4 rounded-xl font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 transition-all shadow-lg ${
+                  className={`w-full py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-md ${
                     isSending || submitted
-                      ? "bg-slate-800 text-slate-400 cursor-not-allowed border border-slate-700"
-                      : "bg-gradient-to-r from-sky-400 via-sky-300 to-blue-400 text-slate-950 hover:opacity-95 shadow-[0_4px_25px_rgba(56,189,248,0.3)] hover:shadow-[0_4px_30px_rgba(56,189,248,0.5)] transform hover:-translate-y-0.5"
+                      ? "bg-zinc-800 text-zinc-400 cursor-not-allowed border border-zinc-700"
+                      : "bg-[#3ecf8e] hover:bg-[#34b27b] text-slate-950 shadow-[0_0_20px_rgba(62,207,142,0.3)] hover:scale-[1.01]"
                   }`}
                 >
                   {isSending ? (
-                    <span>Transmitting Message...</span>
+                    <span>Sending...</span>
                   ) : submitted ? (
-                    <span className="flex items-center gap-2 text-emerald-400">
-                      <CheckCircle size={18} />
-                      Message Received!
+                    <span className="flex items-center gap-1.5 text-emerald-400">
+                      <CheckCircle size={16} />
+                      Message Sent!
                     </span>
                   ) : (
                     <>
                       <span>Send Project Message</span>
-                      <Send size={18} />
+                      <Send size={15} />
                     </>
                   )}
                 </button>
               </form>
 
-              {/* Success modal pop-in */}
+              {/* Success Pop-in */}
               <AnimatePresence>
                 {submitted && (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    className="absolute inset-0 z-50 flex items-center justify-center p-8 bg-slate-950/95 backdrop-blur-md rounded-3xl"
+                    className="absolute inset-0 z-50 flex items-center justify-center p-6 bg-zinc-950/95 backdrop-blur-md rounded-2xl"
                   >
-                    <div className="text-center flex flex-col items-center gap-4 max-w-sm">
-                      <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.3)]">
-                        <CheckCircle size={36} />
+                    <div className="text-center flex flex-col items-center gap-3 max-w-xs">
+                      <div className="w-12 h-12 rounded-full bg-[#3ecf8e]/20 border border-[#3ecf8e]/40 flex items-center justify-center text-[#3ecf8e] shadow-[0_0_15px_rgba(62,207,142,0.3)]">
+                        <CheckCircle size={28} />
                       </div>
-                      <h4 className="text-2xl font-bold text-white">Thank You!</h4>
-                      <p className="text-sm text-slate-300 leading-relaxed">
-                        Your message has been delivered to Abhishek. I'll review your inquiry and get back to you shortly.
+                      <h4 className="text-lg font-bold text-white">Thank You!</h4>
+                      <p className="text-xs text-zinc-300 leading-relaxed">
+                        Your message has been received. Abhishek will get back to you shortly.
                       </p>
                     </div>
                   </motion.div>

@@ -7,9 +7,7 @@ import {
   Briefcase, 
   Calendar, 
   MapPin, 
-  CheckCircle2, 
-  Award,
-  Sparkles
+  CheckCircle2
 } from "lucide-react";
 
 interface TimelineItem {
@@ -27,16 +25,15 @@ const timelineData: TimelineItem[] = [
   {
     type: "experience",
     role: "Freelance Flutter & Mobile Systems Developer",
-    institution: "Independent Contracting & Client Projects",
+    institution: "Client Projects & Independent Contracts",
     location: "Remote / India",
     period: "2023 – Present",
-    badge: "Current Work",
-    description: "Architecting and developing cross-platform mobile applications for startups and independent clients with focus on clean state management and hardware integrations.",
+    badge: "Current Role",
+    description: "Developing cross-platform mobile apps for startups and clients with emphasis on BLoC state architecture, Firebase sync, and hardware integrations.",
     highlights: [
-      "Engineered full-stack Flutter solutions integrated with Firebase Authentication, Firestore, and Cloud Functions",
-      "Built IoT mobile interfaces connecting Raspberry Pi hardware with sub-second MQTT communication",
-      "Integrated secure payments via Razorpay and interactive mapping with Google Maps SDK",
-      "Maintained 60 FPS UI performance through rigorous profiling and widget tree optimization",
+      "Built full-stack Flutter apps with Firebase Auth, Firestore, and Cloud Functions",
+      "Engineered IoT mobile bridges over Raspberry Pi with sub-second MQTT communication",
+      "Integrated Razorpay payment gateways and Google Maps live navigation tracking",
     ],
   },
   {
@@ -45,11 +42,11 @@ const timelineData: TimelineItem[] = [
     institution: "Indira Gandhi National Open University (IGNOU)",
     location: "India",
     period: "2025 – Present",
-    badge: "Undergraduate Degree",
-    description: "Advancing knowledge in software engineering, database design, advanced algorithms, and cloud computing principles through structured distance education.",
+    badge: "Undergraduate",
+    description: "Deepening theoretical software engineering, system architecture, database design, and algorithmic problem-solving through distance education.",
     highlights: [
       "Specialization in object-oriented software engineering and modern database systems",
-      "Balancing real-world freelance engineering with advanced theoretical coursework",
+      "Combining professional client engineering with computer science coursework",
     ],
   },
   {
@@ -59,96 +56,89 @@ const timelineData: TimelineItem[] = [
     location: "India",
     period: "2021 – 2024",
     badge: "Engineering Diploma",
-    description: "Comprehensive foundational engineering curriculum emphasizing low-level programming, microprocessors, operating systems, and computer network architectures.",
+    description: "Technical curriculum focused on microprocessors, embedded hardware systems, C/C++, networking, and relational databases.",
     highlights: [
-      "Hands-on embedded systems programming, C/C++, and hardware interfacing",
-      "Data structures, algorithms, and relational database management (SQL)",
-      "Capstone graduation project focusing on embedded systems & mobile integration",
+      "Hardware programming and embedded sensor interfacing",
+      "Graduation capstone: embedded hardware and mobile application prototype",
     ],
   },
 ];
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 relative z-10 bg-slate-950/40 border-t border-slate-800/60">
-      <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+    <section id="education" className="py-20 relative z-10 bg-[#090a0d]/60 border-t border-zinc-800/60">
+      <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         <SectionHeading
-          badge="Career & Credentials"
+          badge="Background"
           title="Experience & Education"
-          subtitle="A continuous trajectory of technical problem-solving, hands-on client delivery, and computer science foundations."
+          subtitle="A track record of technical delivery, mobile product development, and computer engineering foundations."
         />
 
-        <div className="relative pl-6 sm:pl-10 border-l-2 border-slate-800 ml-4 sm:ml-6 space-y-12">
+        <div className="relative pl-6 sm:pl-8 border-l-2 border-zinc-800 ml-3 sm:ml-4 space-y-6">
           {timelineData.map((item, index) => {
             const isWork = item.type === "experience";
 
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
                 className="relative group"
               >
-                {/* Timeline node dot */}
-                <div className={`absolute -left-[31px] sm:-left-[47px] top-6 w-5 h-5 rounded-full border-4 border-[#030712] ${
-                  isWork ? "bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.6)]" : "bg-indigo-400 shadow-[0_0_12px_rgba(129,140,248,0.6)]"
-                }`} />
+                {/* Compact Node Dot */}
+                <div className="absolute -left-[31px] sm:-left-[39px] top-5 w-4 h-4 rounded-full border-3 border-[#0c0d0e] bg-[#3ecf8e] shadow-[0_0_10px_rgba(62,207,142,0.6)]" />
 
-                {/* Card */}
-                <div className="p-7 sm:p-9 rounded-3xl glass-card border border-slate-800/80 hover:border-sky-500/40 transition-all duration-300 hover:shadow-[0_15px_40px_-15px_rgba(56,189,248,0.12)] space-y-5">
+                {/* Compact Card */}
+                <div className="p-5 sm:p-6 rounded-2xl glass-card border border-zinc-800/80 hover:border-[#3ecf8e]/40 transition-all space-y-3">
                   
                   {/* Card Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className={`p-2.5 rounded-xl ${
-                        isWork ? "bg-sky-500/10 text-sky-400 border border-sky-500/20" : "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"
-                      }`}>
-                        {isWork ? <Briefcase size={20} /> : <GraduationCap size={20} />}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-2 rounded-lg bg-[#3ecf8e]/10 text-[#3ecf8e] border border-[#3ecf8e]/20">
+                        {isWork ? <Briefcase size={16} /> : <GraduationCap size={16} />}
                       </div>
                       <div>
-                        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500">
                           {isWork ? "Professional Experience" : "Academic Education"}
                         </span>
-                        <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-sky-400 transition-colors">
+                        <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-[#3ecf8e] transition-colors">
                           {item.role}
                         </h3>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 self-start sm:self-auto">
-                      <span className="text-xs font-semibold px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-sky-400 flex items-center gap-1.5">
-                        <Calendar size={13} />
-                        {item.period}
-                      </span>
-                    </div>
+                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-zinc-900 border border-zinc-800 text-[#3ecf8e] flex items-center gap-1 self-start sm:self-auto">
+                      <Calendar size={12} />
+                      {item.period}
+                    </span>
                   </div>
 
-                  {/* Institution & Location */}
-                  <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-slate-400 font-medium">
-                    <span className="text-slate-300 font-semibold">{item.institution}</span>
+                  {/* Institution line */}
+                  <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+                    <span className="text-zinc-300 font-semibold">{item.institution}</span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
-                      <MapPin size={14} className="text-slate-500" />
+                      <MapPin size={12} className="text-zinc-500" />
                       {item.location}
                     </span>
                     <span>•</span>
-                    <span className="text-sky-400 font-semibold bg-sky-950/40 px-2 py-0.5 rounded border border-sky-500/20">
+                    <span className="text-[#3ecf8e] font-semibold bg-[#3ecf8e]/10 px-2 py-0.5 rounded text-[10px] border border-[#3ecf8e]/20">
                       {item.badge}
                     </span>
                   </div>
 
-                  <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
                     {item.description}
                   </p>
 
-                  {/* Highlights list */}
-                  <div className="space-y-2 pt-2 border-t border-slate-800/80">
-                    {item.highlights.map((highlight, hIndex) => (
-                      <div key={hIndex} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                        <CheckCircle2 size={16} className="text-sky-400 shrink-0 mt-0.5" />
-                        <span>{highlight}</span>
+                  {/* Highlights */}
+                  <div className="space-y-1.5 pt-2 border-t border-zinc-800/70">
+                    {item.highlights.map((h, hIdx) => (
+                      <div key={hIdx} className="flex items-center gap-2 text-xs text-zinc-300">
+                        <CheckCircle2 size={13} className="text-[#3ecf8e] shrink-0" />
+                        <span>{h}</span>
                       </div>
                     ))}
                   </div>
