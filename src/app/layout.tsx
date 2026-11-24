@@ -1,17 +1,21 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+import InteractiveBackground from "@/components/InteractiveBackground";
 
 export const metadata: Metadata = {
-  title: "Abhishek B | Flutter Developer",
-  description: "Portfolio of Abhishek B, a passionate Flutter Mobile Application Developer.",
+  title: "Abhishek B | Mobile App Developer & Flutter Specialist",
+  description: "Senior Flutter Mobile Application Developer specializing in cross-platform iOS & Android engineering, Firebase architecture, IoT integrations, and responsive digital experiences.",
+  keywords: ["Abhishek B", "Flutter Developer", "Mobile App Developer", "React", "Firebase", "IoT Developer", "iOS", "Android", "Cross-Platform", "India Developer"],
+  authors: [{ name: "Abhishek B" }],
+  creator: "Abhishek B",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0c0d0e",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -21,15 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${inter.variable} antialiased font-sans bg-[#0a0e17] text-white selection:bg-[#42A5F5] selection:text-white relative`}
-      >
-        {/* Dynamic mesh gradients for background inspiration */}
-        <div className="fixed top-0 left-0 w-[500px] h-[500px] bg-[#42A5F5]/20 rounded-full mix-blend-screen filter blur-[100px] opacity-50 -z-10 pointer-events-none translate-x-[-20%] translate-y-[-20%]" />
-        <div className="fixed bottom-0 right-0 w-[600px] h-[600px] bg-[#0D47A1]/20 rounded-full mix-blend-screen filter blur-[120px] opacity-40 -z-10 pointer-events-none translate-x-[20%] translate-y-[20%]" />
+      <body className="antialiased bg-[#0c0d0e] text-zinc-100 selection:bg-[#3ecf8e] selection:text-black relative min-h-screen">
+        {/* Static Background Grid */}
+        <div className="fixed inset-0 bg-grid-cyber pointer-events-none opacity-80 -z-30" />
+
+        {/* Interactive Mouse-Following Background Lighting */}
+        <InteractiveBackground />
 
         <Navbar />
-        <main className="min-h-screen relative z-0">
+        <main className="min-h-screen relative z-10">
           {children}
         </main>
         <Footer />

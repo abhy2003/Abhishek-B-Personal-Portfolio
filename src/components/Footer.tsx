@@ -1,51 +1,109 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
-    return (
-        <footer className="relative py-12 border-t border-white/10 overflow-hidden bg-black/60">
-            <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-[#42A5F5]/50 to-transparent" />
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-            <div className="container mx-auto px-6 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="flex flex-col items-center gap-6"
-                >
-                    <p className="text-gray-400 font-medium">
-                        &copy; {new Date().getFullYear()} Abhishek B. All rights reserved.
-                    </p>
+  return (
+    <footer className="relative py-12 border-t border-zinc-800/80 bg-[#07080a] overflow-hidden">
+      {/* Subtle top ambient line */}
+      <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-[#3ecf8e]/40 to-transparent" />
 
-                    <div className="flex justify-center gap-6">
-                        {[
-                            { icon: <Linkedin size={22} />, href: "https://www.linkedin.com/in/abhishek-b-1a2b13276/" },
-                            { icon: <Github size={22} />, href: "https://github.com/abhy2003" },
-                            {
-                                icon: (
-                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[22px] h-[22px]">
-                                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
-                                    </svg>
-                                ),
-                                href: "https://discordapp.com/users/abhishek_b"
-                            }
-                        ].map((social, i) => (
-                            <a
-                                key={i}
-                                href={social.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-12 h-12 rounded-full glass border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#42A5F5] hover:border-[#42A5F5]/30 hover:shadow-[0_0_15px_rgba(66,165,245,0.4)] transition-all duration-300 transform hover:-translate-y-2"
-                            >
-                                {social.icon}
-                            </a>
-                        ))}
-                    </div>
-                </motion.div>
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-zinc-800/80">
+          
+          {/* Brand Info */}
+          <div className="md:col-span-5 space-y-3">
+            <Link href="#home" className="flex items-center gap-2 text-lg font-bold tracking-tight text-white group">
+              <div className="w-7 h-7 rounded-lg bg-[#3ecf8e] flex items-center justify-center text-slate-950 font-black text-xs shadow-[0_0_12px_rgba(62,207,142,0.3)]">
+                AB
+              </div>
+              <span>
+                Abhishek<span className="text-[#3ecf8e]">.dev</span>
+              </span>
+            </Link>
+
+            <p className="text-xs text-zinc-400 max-w-sm leading-relaxed">
+              Flutter & Cross-Platform Mobile Engineer building scalable, high-performance applications with Firebase, IoT, and Clean Architecture.
+            </p>
+
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold text-[#3ecf8e] bg-[#3ecf8e]/10 border border-[#3ecf8e]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3ecf8e] animate-ping" />
+              <span>Available for Hire & Contract Roles</span>
             </div>
-        </footer>
-    );
+          </div>
+
+          {/* Quick Links */}
+          <div className="md:col-span-3 space-y-2">
+            <h5 className="text-[11px] font-bold uppercase tracking-wider text-zinc-300">Navigation</h5>
+            <ul className="space-y-1.5 text-xs text-zinc-400">
+              {["Home", "Skills", "Projects", "Services", "Experience", "Contact"].map((item) => (
+                <li key={item}>
+                  <Link
+                    href={`#${item.toLowerCase()}`}
+                    className="hover:text-[#3ecf8e] transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Socials & Connect */}
+          <div className="md:col-span-4 space-y-3">
+            <h5 className="text-[11px] font-bold uppercase tracking-wider text-zinc-300">Connect</h5>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { icon: <Linkedin size={16} />, href: "https://www.linkedin.com/in/abhishek-b-1a2b13276/", label: "LinkedIn" },
+                { icon: <Github size={16} />, href: "https://github.com/abhy2003", label: "GitHub" },
+                { icon: <Mail size={16} />, href: "mailto:bijuabhishek530@gmail.com", label: "Email" },
+              ].map((item, i) => (
+                <a
+                  key={i}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
+                  className="p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-[#3ecf8e] hover:border-[#3ecf8e]/40 hover:bg-zinc-800 transition-all"
+                >
+                  {item.icon}
+                </a>
+              ))}
+            </div>
+
+            <p className="text-[11px] text-zinc-500">
+              Direct Contact: <a href="mailto:bijuabhishek530@gmail.com" className="text-zinc-400 hover:text-[#3ecf8e]">bijuabhishek530@gmail.com</a>
+            </p>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-zinc-500">
+          <div>
+            &copy; {new Date().getFullYear()} Abhishek B. All rights reserved.
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span>Built with Next.js & Tailwind CSS</span>
+            <button
+              onClick={scrollToTop}
+              className="p-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-800 transition-all flex items-center gap-1 text-[10px]"
+              title="Scroll back to top"
+            >
+              <ArrowUp size={12} />
+              <span>Top</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+  );
 }
